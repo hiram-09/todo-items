@@ -1,0 +1,11 @@
+:host {
+    display: block;
+}
+
+label.Todo-label {
+    font-family: cursive
+}
+
+button.Todo-button {
+    width: 30px;
+}

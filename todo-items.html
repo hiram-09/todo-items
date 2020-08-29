@@ -1,0 +1,63 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="todo-items">
+    <template>
+    <style>
+      :host {
+          display: block;
+      }
+
+      .Todo-label {
+          font-family: cursive;
+      }
+
+      .Todo-button {
+          float: right;
+          width: 5%;
+          cursor: pointer;
+      }
+      .lista{
+          height: 3em;
+      }
+    </style>
+    <div class="lista">
+      <label class="Todo-label">{{labelItem}}</label>
+      <img class="Todo-button" on-click="eliminar" src="bower_components/todo-items/images/remove.png"/>
+    </div>
+    
+  </template>
+
+    <script>
+        /**
+         * `todo-items`
+         * Componente con los items de la lista 
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class TodoItems extends Polymer.Element {
+            static get is() {
+                return 'todo-items';
+            }
+            static get properties() {
+                return {
+                    labelItem: String,
+                    indexItem: String
+                };
+            }
+            eliminar(e) {
+                this.dispatchEvent(new CustomEvent('eliminar', {
+                    detail: {
+                        id: this.indexItem
+                    },
+                    bubbles: true,
+                    composed: true
+                }));
+            }
+
+        }
+
+        window.customElements.define(TodoItems.is, TodoItems);
+    </script>
+</dom-module>
